@@ -15,16 +15,27 @@ import { bootstrapApplication } from '@angular/platform-browser';
     <h2>{{test}}</h2>
     <h3 (click)="myClickHandler()">Klicki Textbtn</h3>
     <br>
-    <input type=text>
+    <input #myField type="text" value="Maxi">
+    <h3>{{myField.value}}</h3>
+    <br>
+    <button (click)="addElToArr()">Liste vergrößern</button>
+    <ul>
+      <li *ngFor="let element of names">{{element}}</li>
+    </ul>
   `,
 })
 export class App {
   name = 'Angular';
   test: String = 'Klick den Text drunter:';
   propUrlBinding: String = 'https://google.com';
+  names: Array<String> = ['Alfred', 'Ben', 'Cäsar', 'Dora', 'Emil'];
 
   myClickHandler(): void {
     this.test = 'Erfolg!';
+  }
+
+  addElToArr(): void {
+    this.names.push('Flora');
   }
 }
 
